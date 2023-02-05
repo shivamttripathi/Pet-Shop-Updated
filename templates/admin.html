@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+
+<style> 
+input[type=button], input[type=submit], input[type=reset] {
+background-color: #167102;
+border: none;
+color: rgb(255, 255, 255);
+padding: 16px 32px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-family:Georgia, 'Times New Roman', Times, serif;
+font-style: italic;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+        <br />
+    {% endfor %}
+    <form action="/createTables" method="POST">
+        <input type="submit" value="Create Tables" />
+    </form>
+    <form action="/displayOwners" method="POST">
+        <input type="submit" value="Display Owners" />
+    </form>
+    <form action="/displayPets" method="POST">
+        <input type="submit" value="Display Pets" />
+    </form>
+    <form action="/displayOwnership" method="POST">
+        <input type="submit" value="Display Ownership" />
+    </form>
+</body>
+</html>

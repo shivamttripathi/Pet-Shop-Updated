@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            margin:0;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #444;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        
+        .active {
+            background-color: #33dd33;
+        }
+
+        .maindiv {
+            margin: auto;
+            width: auto;
+            background-color: lightgray;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            border: 3px solid #33dd33;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a id="nav1" href="{{ url_for('index') }}">Home</a></li>
+        <li><a id="nav2" href="{{ url_for('dispOwnership') }}">Ownership</a></li>
+        <li><a id="nav3" href="{{ url_for('dispOwners') }}">Users</a></li>
+        <li><a id="nav4" href="{{ url_for('dispPets') }}">Pets</a></li>
+        <li><a id="nav5" href="{{ url_for('registerUser') }}">Register User</a></li>
+        <li><a id="nav6" href="{{ url_for('registerPet') }}">Register Pet</a></li>
+        <li><a id="nav7" href="{{ url_for('ownPet') }}">Register Ownership</a></li>
+        <li><a id="nav8" href="{{ url_for('createTables') }}">Create Tables</a></li>
+    </ul>
+    <div style="padding: 20px; margin-top: 30px; width: 100;">
+        <div class="maindiv">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+    {% if id %}
+        <script>
+            var curr = document.getElementById("{{ id }}");
+            curr.classList.add("active");
+        </script>
+    {% endif %}
+</body>
+</html>

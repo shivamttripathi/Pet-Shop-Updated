@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets</title>
+</head>
+
+<style>
+table {
+border-collapse: collapse;
+width: 50%;
+}
+
+th, td {
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+th {
+background-color: #aa0404;
+color: white;
+}
+
+tr:hover {background-color: coral;}
+</style>
+
+<body>
+    {% if rows %}
+        <table border="1" style="border-collapse:collapse;">
+            <tr>
+                <th>Pet Id</th>
+                <th>Pet Name</th>
+                <th>Pet Price</th>
+                <th>Pet Category</th>
+                <th>Action</th>
+            </tr>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td><a href="{{ url_for('modifyPet', petId=row[0]) }}">Modify</a> | <a href="{{ url_for('deletePet', petId=row[0]) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        No data to display
+    {% endif %}
+</body>
+</html>
